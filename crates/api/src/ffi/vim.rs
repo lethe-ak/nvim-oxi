@@ -2,12 +2,12 @@ use types::*;
 
 use crate::opts::*;
 
-// On 0.10 and 0.11.
-#[cfg(all(feature = "neovim-0-10", not(feature = "neovim-nightly")))]
+// Only on 0.11.
+#[cfg(not(feature = "neovim-0-12"))]
 type NvimEchoOutput = ();
 
-// Only on Nightly.
-#[cfg(feature = "neovim-nightly")]
+// On 0.12 and Nightly.
+#[cfg(feature = "neovim-0-12")]
 type NvimEchoOutput = Object;
 
 #[cfg_attr(
@@ -173,11 +173,7 @@ unsafe extern "C" {
     ) -> Object;
 
     // https://github.com/neovim/neovim/blob/v0.10.0/src/nvim/api/vim.c#L360
-    pub(crate) fn nvim_input(
-        #[cfg(feature = "neovim-0-11")] // On 0.11 and Nightly.
-        channel_id: u64,
-        keys: NvimStr,
-    ) -> Integer;
+    pub(crate) fn nvim_input(channel_id: u64, keys: NvimStr) -> Integer;
 
     // https://github.com/neovim/neovim/blob/v0.10.0/src/nvim/api/vim.c#L390
     pub(crate) fn nvim_input_mouse(

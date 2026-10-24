@@ -17,9 +17,9 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [features]
 default = ["__no_docsrs"]
-neovim-0-10 = []
-neovim-0-11 = ["neovim-0-10"]
-neovim-nightly = ["neovim-0-11"]
+neovim-0-11 = []
+neovim-0-12 = ["neovim-0-11"]
+neovim-nightly = ["neovim-0-12"]
 mlua = ["dep:mlua"]
 
 __docsrs = ["mlua?/vendored"]
@@ -28,8 +28,8 @@ __no_docsrs = ["mlua?/module"]
 [dependencies]
 luajit = { workspace = true }
 macros = { workspace = true }
-serde = { version = "1.0", features = ["derive"] }
-serde_repr = "0.1"
+serde = { workspace = true, features = ["derive"] }
+serde_repr = { workspace = true }
 thiserror = { workspace = true }
 types = { workspace = true, features = ["serde"] }
 
