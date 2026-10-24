@@ -240,6 +240,7 @@ unsafe extern "C" {
         r#type: NvimStr,
         after: bool,
         follow: bool,
+        arena: *mut Arena,
         err: *mut Error,
     );
 

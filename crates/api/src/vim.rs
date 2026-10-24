@@ -748,6 +748,7 @@ where
             reg_type.as_nvim_str(),
             after,
             follow,
+            types::arena(),
             &mut err,
         )
     };

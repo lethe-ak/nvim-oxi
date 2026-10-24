@@ -15,6 +15,8 @@ pub struct CreateAutocmdOpts {
     #[builder(argtype = "Buffer", inline = "{0}.0")]
     buffer: types::BufHandle,
 
+    _buf: types::BufHandle,
+
     /// Callback to execute when the autocommand is triggered. Cannot be used
     /// together with `command`.
     #[builder(
